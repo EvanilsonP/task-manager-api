@@ -1,8 +1,10 @@
 const express = require('express');
-const port = 3000;
+const port = process.env.PORT || 4000;
 const app = express();
-const mongoose = require('./database/mongoose');
+const userRouters = require('./routers/user');
+require('./database/mongoose');
 
 app.use(express.json());
+app.use(userRouters);
 
 app.listen(port, () => console.log(`Server is up and running on port ${port}`));
